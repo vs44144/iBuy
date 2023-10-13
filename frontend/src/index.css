@@ -29,6 +29,11 @@ h2{
 .btn-block{
     width: 100%;
 }
+
+.cpb{
+    width: 95%;
+    margin: 10px;
+}
 .text-right{
     margin-left: 80vh;
 }
