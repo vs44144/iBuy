@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from "./components/Header"
 import Footer from "./components/Footer";
 import HomeScreen from './screens/HomeScreen'
-import ProuductScreen from './screens/ProuductScreen';
+import ProductScreen from './screens/ProductScreen';
 import CartScreen from './screens/CartScreen';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
@@ -33,7 +33,7 @@ function App() {
           <Route path='/placeorder' element={<PlaceOrderScreen />} />
           <Route path='/order/:id' element={<OrderScreen />} />
           <Route path='/payment' element={<PaymentScreen />} />
-          <Route path='/product/:id' element={<ProuductScreen />} />
+          <Route path='/product/:id' element={<ProductScreen />} />
           <Route path='/cart/:id?' element={<CartScreen />} />
           
           <Route path='/admin/userlist' element={<UserListScreen />} />
