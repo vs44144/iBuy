@@ -150,3 +150,22 @@ def createProductReview(request, pk):
         product.save()
 
         return Response('Review Added')
+
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def updateProductStock(request):
+    data = request.data
+    product_id = data['product_id']
+    quantity = data['quantity']
+
+    try:
+        product = Product.objects.get(_id=product_id)
+        if product.countInStock >= quantity:
+            product.countInStock -= quantity
+            product.save()
+            return Response('Product stock updated successfully')
+        else:
+            return Response('Insufficient stock', status=status.HTTP_400_BAD_REQUEST)
+    except Product.DoesNotExist:
+        return Response('Product not found', status=status.HTTP_404_NOT_FOUND)
