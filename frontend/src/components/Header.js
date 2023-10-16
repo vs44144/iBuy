@@ -22,7 +22,7 @@ function Header() {
       <Navbar  expand="lg" className="bg-body-tertiary">
       <Container>
         <LinkContainer to='/'>
-          <Navbar.Brand >iBuy</Navbar.Brand>
+          <Navbar.Brand > iBuy</Navbar.Brand>
         </LinkContainer>
 
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

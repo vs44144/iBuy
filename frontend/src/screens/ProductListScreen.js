@@ -29,6 +29,7 @@ function ProductListScreen() {
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
 
+
     let keyword = location.search
 
     useEffect(() => {
@@ -56,8 +57,6 @@ function ProductListScreen() {
         // console.log('U krijua')
         dispatch(createProduct())
     }
-
-
 
   return (
     <div>
@@ -99,10 +98,14 @@ function ProductListScreen() {
                         </thead>
 
                         <tbody>
-                            {products.map(product => (
-                                <tr key={product._id}>
-                                    <td>{product._id}</td>
-                                    <td>{product.name}</td>
+                            {products.map(product => {
+                                const outOfStock = product.countInStock === 0 ? 'text-danger' : '';
+
+                                return (
+                                <tr key={product._id} >
+                                    <td className={outOfStock} >{product._id}</td>
+                                    <td className={outOfStock} >{product.name}</td>
+                                    <td className={outOfStock} >{product.countInStock}</td>
                                     <td>€{product.price}</td>
                                     <td>{product.category}</td>
                                     <td>{product.brand}</td>
@@ -119,7 +122,8 @@ function ProductListScreen() {
                                         </Button>
                                     </td>
                                 </tr>
-                            ))}
+                            );
+                        })}
                         </tbody>
                     </Table>
                     <Paginate page={page} pages={pages} isAdmin={true} />

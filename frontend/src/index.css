@@ -30,10 +30,6 @@ h2{
     width: 100%;
 }
 
-.cpb{
-    width: 95%;
-    margin: 10px;
-}
 .text-right{
     margin-left: 80vh;
 }
@@ -54,6 +50,7 @@ h2{
     width: 100%;
     background-color: black;
 }
+
 /* carousel */
 .carousel-item-next,
 .carousel-item-prev,

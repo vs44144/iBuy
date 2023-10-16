@@ -9,25 +9,6 @@ function SearchBox() {
     
     const[keyword, setKeyword] = useState('')
 
-    // const submitHandler = (e) => {
-    //     e.preventDefault()
-    //     if (keyword) {
-    //         history(`/?keyword=${keyword}&page=1`)
-    //     } else {
-    //         history(history(history.location.pathname))
-    //     }
-    // }
-
-
-    // const submitHandler = (e) => {
-    //     e.preventDefault()
-    //     if (keyword) {
-    //         history(`/?keyword=${keyword}&page=1`)
-    //     } else {
-    //         history('/?page=1')
-    //     }
-    // }
-
     const submitHandler = (e) => {
     e.preventDefault()
     if (keyword) {
@@ -61,7 +42,7 @@ const changeHandler = (e) => {
                         variant='outline-success'
                         className='p-2'
                     >
-                        Submit
+                        Search
                     </Button>
                 </Col>
             </Row>
