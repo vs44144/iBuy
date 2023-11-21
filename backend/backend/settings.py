@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'storages',
 
     'base.apps.BaseConfig',
 ]
@@ -110,7 +111,9 @@ ROOT_URLCONF = 'backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend/build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,9 +133,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        "HOST": "ibuy-identifier.cdzy1fdrz8zi.eu-north-1.rds.amazonaws.com",
+        "PORT": "5432",
+        "NAME": "ibuydb",
+        "USER": "violasalihu",
+        "PASSWORD": "LAGdnwACehSk}ogV3J",
+        "CONN_MAX_AGE": 600,  # number of seconds database connections should persist for
     }
 }
 
@@ -178,7 +186,8 @@ MEDIA_URL = '/images/'
 
 #upload images inside the static/images folder
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'frontend', 'build', 'static')
 ]
 
 # Default primary key field type
@@ -187,3 +196,16 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOW_ALL_ORIGINS = True
+
+AWS_QUERYSTRING_AUTH = False
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = 'AKIA576IDDNA7SWH2HMD'
+AWS_SECRET_ACCESS_KEY = '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'
+
+AWS_STORAGE_BUCKET_NAME = 'ibuy-bucket'
+
+AWS_S3_REGION_NAME = 'eu-north-1'
+
+
+

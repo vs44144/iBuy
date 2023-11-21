@@ -19,6 +19,9 @@ function CartScreen() {
   const { cartItems} = cart
   //console.log('cartItems',cartItems)
 
+  const userLogin = useSelector(state => state.userLogin)
+  const { userInfo } = userLogin
+
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty))
@@ -40,9 +43,9 @@ function CartScreen() {
               { cartItems.length === 0 ? (
                 <Message variant='info'>
                   Your cart is empty  
-                  <Link to='/' style={{color:'black', marginLeft:'20px'}}>
+                  {/* <Link to='/' style={{color:'black', marginLeft:'20px'}}>
                     Go Back
-                  </Link>
+                  </Link> */}
                 </Message>
               ): (
                 <ListGroup variant="flush">
@@ -100,16 +103,24 @@ function CartScreen() {
                     €{ cartItems.reduce((acc,item) => acc + item.qty * item.price, 0).toFixed(2)} 
                     </ListGroup.Item>
                 </ListGroup>
-                <ListGroup.Item>
+                
+
+                {userInfo ? (
+                  <ListGroup.Item>
                   <Button
-                  type="button"
-                  className="btn-block"
-                  disabled={cartItems.length === 0}
-                  onClick={checkoutHandler}
-                  >
+                    type="button"
+                    className="btn-block"
+                    disabled={cartItems.length === 0}
+                    onClick={checkoutHandler}
+                    >
                     Proceed to Checkout
-                  </Button>
-                </ListGroup.Item>
+                    </Button>
+                  </ListGroup.Item>
+                    ) : (
+                    <ListGroup.Item>
+                      <Button className='btn-block' disabled type='button'>Login to Add to Cart</Button>
+                    </ListGroup.Item>
+                )}
               </Card>
             </Col>
             

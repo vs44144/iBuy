@@ -137,9 +137,15 @@ function ProductScreen({}) {
                                         </ListGroup.Item>
                                     )}
 
-                                    <ListGroup.Item>
-                                        <Button  onClick={addToCartHandler} className='btn-block' disabled={product.countInStock === 0}  type='button' >Add to Cart</Button>
-                                    </ListGroup.Item>
+                                    {userInfo ? (
+                                        <ListGroup.Item>
+                                            <Button onClick={addToCartHandler} className='btn-block' disabled={product.countInStock === 0} type='button'>Add to Cart</Button>
+                                        </ListGroup.Item>
+                                    ) : (
+                                        <ListGroup.Item>
+                                            <Button className='btn-block' disabled type='button'>Login to Add to Cart</Button>
+                                        </ListGroup.Item>
+                                    )}
                                     
                                 </ListGroup>
                             </Card>
@@ -208,7 +214,7 @@ function ProductScreen({}) {
 
                                         </Form>
                                     ) : (
-                                            <Message variant='info'>Please <Link to='/login'>login</Link> to write a review</Message>
+                                            <Message variant='info'>Please <Link to='/login' style={{ color: 'black' }}>login</Link> to write a review</Message>
                                         )}
                                 </ListGroup.Item>
                             </ListGroup>

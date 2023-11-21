@@ -194,6 +194,7 @@ function OrderScreen() {
                                         <PayPalButton 
                                             amount={order.totalPrice}
                                             onSuccess={successPaymentHandler}
+                                            //disabled={order.paymentMethod === 'Cash'}
                                         />
                                     )}
                                 </ListGroup.Item>
