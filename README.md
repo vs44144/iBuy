@@ -1,35 +1,28 @@
-# iBuy# Online Order webpage
-### Setup Frontend
-#### Install Frontend folder
-```
-npx create-react-app frontend
-```
-#### Install Packages
-```
-npm install
-```
-```
-npm install react-bootstrap
-```
-```
-npm install react-router-dom react-router-bootstrap
-```
-```
-npm install redux react-redux redux-thunk redux-devtools-extension
-```
-```
-npm install react-icons
-```
-```
-npm install @reduxjs/toolkit
-```
-```
-npm install react-paypal-button-v2
-```
-##### Navigate into the frontend folder
-```
-npm start
-```
+# iBuy Ecommerce Website With Django + React + PostgreSQL
+
+![DEMO](backend/static/images/demo/first_page_nologin.png)
+
+
+# Features
+* Full featured shopping cart
+* Product reviews and ratings
+* Top products carousel
+* Product pagination
+* Product search feature
+* User profile with orders
+* Admin product management
+* Admin user management
+* Admin Order details page
+* Mark orders as delivered option
+* Checkout process (shipping, payment method, etc)
+* PayPal / credit card integration
+
+
+### Download & Setup Instructions
+
+* 1 - Clone project: git clone https://github.com/vs44144/iBuy.git
+* 2 - cd backend
+
 ### Setup environment
 ##### Create environment
 - Linux, macOS: `python3 -m venv .env/`
@@ -37,33 +30,9 @@ npm start
 ##### Activate environment
 - Linux, macOS: `source .env/bin/activate`
 - Windows: `.env\Scripts\activate`
-### Setup Backend
-#### Install Packages
-```
-pip install django
-```
-```
-pip install pillow
-```
-```
-pip install django-cors-headers
-```
-```
-pip install djangorestframework
-```
-```
-pip install djangorestframework-simplejwt
-```
-#### Create Backend folder
-```
-django-admin startproject backend
-```
-#### Create Base folder
-```
-python manage.py startapp base
-```
-#### Run the backend server
-```
-python manage.py runserver
-```
-s
+* 5 - pip install -r requirements.txt
+* 6 - python manage.py runserver
+
+# Install react modules
+* 1 - cd frontend
+* 2 - npm install
