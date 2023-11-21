@@ -23,7 +23,7 @@
 * 1 - Clone project: git clone https://github.com/vs44144/iBuy.git
 * 2 - cd backend
 
-### Setup environment
+* 3 - Setup environment
 ##### Create environment
 - Linux, macOS: `python3 -m venv .env/`
 - Windows: `python -m venv .env/`
