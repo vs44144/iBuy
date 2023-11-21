@@ -144,6 +144,25 @@ DATABASES = {
     }
 }
 
+# IBUY_DATABASE_HOST = os.environ.get("IBUY_DATABASE_HOST", "localhost")
+# IBUY_DATABASE_PORT = os.environ.get("IBUY_DATABASE_PORT", "5432")
+# IBUY_DATABASE_NAME = os.environ.get("IBUY_DATABASE_NAME", "brokerx")
+# IBUY_DATABASE_USER_NAME = os.environ.get("IBUY_DATABASE_USER_NAME", "")
+# IBUY_DATABASE_PASSWORD = os.environ.get("IBUY_DATABASE_USER_PASSWORD", "")
+
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql_psycopg2",
+#         "HOST": IBUY_DATABASE_HOST,
+#         "PORT": IBUY_DATABASE_PORT,
+#         "NAME": IBUY_DATABASE_NAME,
+#         "USER": IBUY_DATABASE_USER_NAME,
+#         "PASSWORD": IBUY_DATABASE_USER_PASSWORD,
+#         # number of seconds database connections should persist for
+#         "CONN_MAX_AGE": 600,
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
