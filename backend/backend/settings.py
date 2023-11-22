@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-oe^q1q3p=4an#-vw&4+xua+*y0)-8vi2%_erdq=u6#r0#1)6=-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
 
 
 # Application definition
@@ -148,7 +148,7 @@ DATABASES = {
 # IBUY_DATABASE_PORT = os.environ.get("IBUY_DATABASE_PORT", "5432")
 # IBUY_DATABASE_NAME = os.environ.get("IBUY_DATABASE_NAME", "brokerx")
 # IBUY_DATABASE_USER_NAME = os.environ.get("IBUY_DATABASE_USER_NAME", "")
-# IBUY_DATABASE_PASSWORD = os.environ.get("IBUY_DATABASE_USER_PASSWORD", "")
+# IBUY_DATABASE_PASSWORD = os.environ.get("IBUY_DATABASE_PASSWORD", "")
 
 # DATABASES = {
 #     "default": {
@@ -157,7 +157,7 @@ DATABASES = {
 #         "PORT": IBUY_DATABASE_PORT,
 #         "NAME": IBUY_DATABASE_NAME,
 #         "USER": IBUY_DATABASE_USER_NAME,
-#         "PASSWORD": IBUY_DATABASE_USER_PASSWORD,
+#         "PASSWORD": IBUY_DATABASE_PASSWORD,
 #         # number of seconds database connections should persist for
 #         "CONN_MAX_AGE": 600,
 #     }
@@ -198,7 +198,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+
+
 STATIC_URL = '/static/'
+STATIC_ROOT = '/backend/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static', 'images')
 MEDIA_URL = '/images/'
