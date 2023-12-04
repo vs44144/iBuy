@@ -163,7 +163,17 @@ DATABASES = {
 #     }
 # }
 
+# Redis Cashing
 
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/1",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -222,12 +232,18 @@ CORS_ALLOW_ALL_ORIGINS = True
 AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'AKIA576IDDNA7SWH2HMD'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = 'secret'
+AWS_SECRET_ACCESS_KEY = 'secret'
 
 AWS_STORAGE_BUCKET_NAME = 'ibuy-bucket'
 
 AWS_S3_REGION_NAME = 'eu-north-1'
 
 
+# Use Redis for session storage
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+# Use Redis as the Celery broker
+CELERY_BROKER_URL = 'redis://127.0.0.1:6379/1'
 
