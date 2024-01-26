@@ -20,16 +20,17 @@
 
 ### Download & Setup Instructions
 
-#### 1 - Clone project: git clone https://github.com/vs44144/iBuy.git
-#### 2 - cd backend
-#### 3 - Setup environment
+#### 1. Clone project: 
+- git clone https://github.com/vs44144/iBuy.git
+
+#### 2. Setup environment
 ##### Create environment
 - Linux, macOS: `python3 -m venv .env/`
 - Windows: `python -m venv .env/`
 ##### Activate environment
 - Linux, macOS: `source .env/bin/activate`
 - Windows: `.env\Scripts\activate`
-##### Install necessary requirments 
+##### Install necessary requirementss 
 - pip install -r requirements.txt
 ##### Migrate changes into database
 - python manage.py migrate
@@ -37,7 +38,7 @@
 - python manage.py runserver
 
 
-#### 4 Install react modules
+#### 3 Install react modules
 ##### Navigate into the frontend 
 - cd backend/frontend
 ##### Install node modules
