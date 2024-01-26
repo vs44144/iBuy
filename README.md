@@ -21,7 +21,7 @@
 ### Download & Setup Instructions
 
 #### 1. Clone project: 
-- git clone https://github.com/vs44144/iBuy.git
+- `git clone https://github.com/vs44144/iBuy.git`
 
 #### 2. Setup environment
 ##### Create environment
