@@ -31,17 +31,20 @@
 - Linux, macOS: `source .env/bin/activate`
 - Windows: `.env\Scripts\activate`
 ##### Install necessary requirementss 
-- pip install -r requirements.txt
+- `pip install -r requirements.txt`
 ##### Migrate changes into database
-- python manage.py migrate
+- `python manage.py migrate`
 ##### Start the Backend
-- python manage.py runserver
+- `python manage.py runserver`
 
 
-#### 3 Install react modules
+#### 3. Install react modules
 ##### Navigate into the frontend 
-- cd backend/frontend
+- `cd backend/frontend`
 ##### Install node modules
-- npm install
+- `npm install`
 ##### Start the Frontend
-- npm start
+- `npm start`
+
+#### 4. Navigate to this url
+- `http://127.0.0.1:8000/`
