@@ -21,10 +21,12 @@ h2{
     margin: 0.1rem;
 }
 
-.product-images{
-    height: 210px;
-    width: 340px;
+.product-image {
+  width: 100%; 
+  height: auto;
+  object-fit: cover;
 }
+
 
 .btn-block{
     width: 100%;

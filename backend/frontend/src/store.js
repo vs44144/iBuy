@@ -30,6 +30,14 @@ import {
     orderListMyReducer,
     orderListReducer,
 } from './reducers/orderReducers'
+import{
+  exampleListReducer,
+  exampleDetailsReducer,
+  exampleDeleteReducer,
+  exampleCreateReducer,
+  exampleUpdateReducer,
+  exampleTopRatedReducer,
+} from './reducers/exampleReducers'
 
 const rootReducer = combineReducers({
     productList: productListReducer,
@@ -56,6 +64,13 @@ const rootReducer = combineReducers({
     orderDeliver: orderDeliverReducer,
     orderListMy: orderListMyReducer,
     orderList: orderListReducer,
+
+    exampleList: exampleListReducer,
+    exampleDetails: exampleDetailsReducer,
+    exampleDelete: exampleDeleteReducer,
+    exampleCreate: exampleCreateReducer,
+    exampleUpdate: exampleUpdateReducer,
+    exampleTopRated: exampleTopRatedReducer,
     
 })
 

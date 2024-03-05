@@ -165,15 +165,15 @@ DATABASES = {
 
 # Redis Cashing
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND": "django_redis.cache.RedisCache",
+#         "LOCATION": "redis://127.0.0.1:6379/1",
+#         "OPTIONS": {
+#             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+#         }
+#     }
+# }
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -232,8 +232,8 @@ CORS_ALLOW_ALL_ORIGINS = True
 AWS_QUERYSTRING_AUTH = False
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-AWS_ACCESS_KEY_ID = 'secret'
-AWS_SECRET_ACCESS_KEY = 'secret'
+AWS_ACCESS_KEY_ID = 'AKIA576IDDNAQX5G655N'
+AWS_SECRET_ACCESS_KEY = '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'
 
 AWS_STORAGE_BUCKET_NAME = 'ibuy-bucket'
 

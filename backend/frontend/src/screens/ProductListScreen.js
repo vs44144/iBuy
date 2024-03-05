@@ -90,6 +90,7 @@ function ProductListScreen() {
                             <tr>
                                 <th>ID</th>
                                 <th>NAME</th>
+                                <th>IN STOCK</th>
                                 <th>PRICE</th>
                                 <th>CATEGORY</th>
                                 <th>BRAND</th>
@@ -98,7 +99,7 @@ function ProductListScreen() {
                         </thead>
 
                         <tbody>
-                            {products.map(product => {
+                        {products.map(product => {
                                 const outOfStock = product.countInStock === 0 ? 'text-danger' : '';
 
                                 return (
