@@ -17,6 +17,13 @@ import UserEditScreen from './screens/UserEditScreen';
 import ProductListScreen from './screens/ProductListScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import OrderListScreen from './screens/OrderListScreen';
+import ExampleListScreen from './screens/ExampleListScreen';
+import ExampleEditScreen from './screens/ExampleEditScreen';
+import ShembulliPareListScreen from './screens/ShembulliPareListScreen';
+import ShembulliPareEditScreen from './screens/ShembulliPareEditScreen';
+import ShembulliDyteListScreen from './screens/ShembulliDyteListScreen';
+import ShembulliDyteEditScreen from './screens/ShembulliDyteEditScreen';
+
 
 function App() {
   return (
@@ -43,6 +50,18 @@ function App() {
           <Route path='/admin/product/:id/edit' element={<ProductEditScreen />} />
 
           <Route path='/admin/orderlist' element={<OrderListScreen />} />
+
+          <Route path='/admin/examplelist' element={<ExampleListScreen />} />
+          <Route path='/admin/example/:id/edit' element={<ExampleEditScreen />} />
+
+          <Route path='/admin/shembulliparelist' element={<ShembulliPareListScreen />} />
+          <Route path='/admin/shembullipare/:id/edit' element={<ShembulliPareEditScreen />} />
+
+          <Route path='/admin/shembullidytelist' element={<ShembulliDyteListScreen />} />
+          <Route path='/admin/shembullidyte/:id/edit' element={<ShembulliDyteEditScreen />} />
+
+
+
           </Routes>
         </Container>
       </main>

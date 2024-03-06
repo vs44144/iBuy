@@ -69,13 +69,21 @@ function Header() {
                   <LinkContainer to='/admin/orderlist'>
                 <NavDropdown.Item>Orders</NavDropdown.Item>
                   </LinkContainer>
+                  
+                  <LinkContainer to='/admin/examplelist'>
+                <NavDropdown.Item>Example</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to='/admin/shembulliparelist'>
+                <NavDropdown.Item>Shembulli Pare</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to='/admin/shembullidytelist'>
+                <NavDropdown.Item>Shembulli Dyte</NavDropdown.Item>
+                  </LinkContainer>
 
                 </NavDropdown>
           )}
-
-
-          
-          
           </Nav>
           
         </Navbar.Collapse>

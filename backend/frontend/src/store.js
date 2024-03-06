@@ -30,6 +30,30 @@ import {
     orderListMyReducer,
     orderListReducer,
 } from './reducers/orderReducers'
+import{
+  exampleListReducer,
+  exampleDetailsReducer,
+  exampleDeleteReducer,
+  exampleCreateReducer,
+  exampleUpdateReducer,
+  exampleTopRatedReducer,
+} from './reducers/exampleReducers'
+
+import {
+  shembullipareListReducer,
+  shembullipareDetailsReducer,
+  shembullipareDeleteReducer,
+  shembullipareCreateReducer,
+  shembullipareUpdateReducer
+} from './reducers/shembullipareReducers'
+
+import {
+  shembullidyteListReducer,
+  shembullidyteDetailsReducer,
+  shembullidyteDeleteReducer,
+  shembullidyteCreateReducer,
+  shembullidyteUpdateReducer
+} from './reducers/shembullidyteReducers'
 
 const rootReducer = combineReducers({
     productList: productListReducer,
@@ -56,6 +80,25 @@ const rootReducer = combineReducers({
     orderDeliver: orderDeliverReducer,
     orderListMy: orderListMyReducer,
     orderList: orderListReducer,
+
+    exampleList: exampleListReducer,
+    exampleDetails: exampleDetailsReducer,
+    exampleDelete: exampleDeleteReducer,
+    exampleCreate: exampleCreateReducer,
+    exampleUpdate: exampleUpdateReducer,
+    exampleTopRated: exampleTopRatedReducer,
+
+    shembullipareList: shembullipareListReducer,
+    shembullipareDetails: shembullipareDetailsReducer,
+    shembullipareDelete: shembullipareDeleteReducer,
+    shembullipareCreate: shembullipareCreateReducer,
+    shembullipareUpdate: shembullipareUpdateReducer,
+
+    shembullidyteList: shembullidyteListReducer,
+    shembullidyteDetails: shembullidyteDetailsReducer,
+    shembullidyteDelete: shembullidyteDeleteReducer,
+    shembullidyteCreate: shembullidyteCreateReducer,
+    shembullidyteUpdate: shembullidyteUpdateReducer
     
 })
 

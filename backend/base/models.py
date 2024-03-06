@@ -1,5 +1,9 @@
+import uuid
+
 from django.db import models
 from django.contrib.auth.models import User
+
+
 
 
 class Product(models.Model):
@@ -73,3 +77,41 @@ class ShippingAddress(models.Model):
     def __str__(self):
         return str(self.address)
     
+class Example(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    image = models.ImageField(  null=True,
+                                blank=True, 
+                                default='/placeholder.png')
+    description = models.TextField(null=True, blank=True)
+    shembull = models.IntegerField(null=True, blank=True, default=0)
+    _id = models.AutoField(primary_key=True, editable=False)
+    example_id = models.UUIDField(default=uuid.uuid4, editable=False)
+
+    def __str__(self):
+        return self.name
+    
+
+class ShembulliPare(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    shembulliPareId = models.AutoField(primary_key=True, editable=False)
+    shembull = models.IntegerField(null=True, blank=True, default=0)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    image = models.ImageField(  null=True,
+                                blank=True, 
+                                default='/placeholder.png')
+    type = models.CharField(max_length=50, null=True, blank=True)
+    isDeleted = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.name
+    
+class ShembulliDyte(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    shembulliDyteId = models.AutoField(primary_key=True, editable=True)
+    shembull = models.IntegerField(null=True, blank=True, default=0)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    isDeleted = models.BooleanField(default=False)
+    shembulliPare = models.ForeignKey(ShembulliPare, on_delete=models.CASCADE, related_name='shembulli_dyte')
+    def __str__(self):
+        return self.name

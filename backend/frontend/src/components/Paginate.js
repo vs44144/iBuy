@@ -1,8 +1,10 @@
 import React from 'react'
 import { Pagination } from 'react-bootstrap'
-import { LinkContainer } from 'react-router-bootstrap'
+import { useNavigate } from 'react-router-dom'
 
 function Paginate({ pages, page, keyword = '', isAdmin = false }) {
+
+    const navigate = useNavigate()
     // if (keyword) {
     //     keyword = keyword.split('?keyword=')[1].split('&')[0]
     // }
@@ -16,15 +18,16 @@ function Paginate({ pages, page, keyword = '', isAdmin = false }) {
     return (pages > 1 && (
         <Pagination className="pagination-container">
             {[...Array(pages).keys()].map((x) => (
-                <LinkContainer
-                    key={x + 1}
-                    to={{
-                        pathname: isAdmin ? "/admin/productlist" : "/",
-                        search: `?keyword=${keyword}&page=${x + 1}`
-                    }}
-                >
-                    <Pagination.Item active={x + 1 === page}>{x + 1}</Pagination.Item>
-                </LinkContainer>
+            <Pagination.Item
+                key={x + 1}
+                onClick={() => navigate(`?keyword=${keyword}&page=${x + 1}`)}
+                active={x + 1 === page}
+                to={{
+                    search: `?keyword=${keyword}&page=${x + 1}`
+                }}
+            >
+                {x + 1}
+            </Pagination.Item>
             ))}
         </Pagination>
     )
