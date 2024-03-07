@@ -55,6 +55,22 @@ import {
   shembullidyteUpdateReducer
 } from './reducers/shembullidyteReducers'
 
+import{
+  planetListReducer,
+  planetDetailsReducer,
+  planetDeleteReducer,
+  planetCreateReducer,
+  planetUpdateReducer
+} from './reducers/planetReducers'
+
+import{
+  satelliteListReducer,
+  satelliteDetailsReducer,
+  satelliteDeleteReducer,
+  satelliteCreateReducer,
+  satelliteUpdateReducer
+} from './reducers/satelliteReducers'
+
 const rootReducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
@@ -98,7 +114,19 @@ const rootReducer = combineReducers({
     shembullidyteDetails: shembullidyteDetailsReducer,
     shembullidyteDelete: shembullidyteDeleteReducer,
     shembullidyteCreate: shembullidyteCreateReducer,
-    shembullidyteUpdate: shembullidyteUpdateReducer
+    shembullidyteUpdate: shembullidyteUpdateReducer,
+
+    planetList: planetListReducer,
+    planetDetails: planetDetailsReducer,
+    planetDelete: planetDeleteReducer,
+    planetCreate: planetCreateReducer,
+    planetUpdate: planetUpdateReducer,
+
+    satelliteList: satelliteListReducer,
+    satelliteDetails: satelliteDetailsReducer,
+    satelliteDelete: satelliteDeleteReducer,
+    satelliteCreate: satelliteCreateReducer,
+    satelliteUpdate: satelliteUpdateReducer,
     
 })
 

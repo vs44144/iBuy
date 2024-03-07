@@ -74,12 +74,20 @@ function Header() {
                 <NavDropdown.Item>Example</NavDropdown.Item>
                   </LinkContainer>
 
-                  <LinkContainer to='/admin/shembulliparelist'>
+                  {/* <LinkContainer to='/admin/shembulliparelist'>
                 <NavDropdown.Item>Shembulli Pare</NavDropdown.Item>
                   </LinkContainer>
 
                   <LinkContainer to='/admin/shembullidytelist'>
                 <NavDropdown.Item>Shembulli Dyte</NavDropdown.Item>
+                  </LinkContainer> */}
+
+                  <LinkContainer to='/admin/planetlist'>
+                <NavDropdown.Item>Planet</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to='/admin/satellitelist'>
+                <NavDropdown.Item>Satellite</NavDropdown.Item>
                   </LinkContainer>
 
                 </NavDropdown>

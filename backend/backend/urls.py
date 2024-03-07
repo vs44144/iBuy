@@ -30,6 +30,8 @@ urlpatterns = [
     path('api/orders/', include('base.urls.order_urls')),
     path('api/examples/', include('base.urls.example_urls')),
     path('api/shembujtepare/', include('base.urls.shembullipare_urls')),
+    path('api/planets/', include('base.urls.planet_urls')),
+    path('api/satellites/', include('base.urls.satellite_urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

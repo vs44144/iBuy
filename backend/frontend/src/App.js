@@ -23,6 +23,10 @@ import ShembulliPareListScreen from './screens/ShembulliPareListScreen';
 import ShembulliPareEditScreen from './screens/ShembulliPareEditScreen';
 import ShembulliDyteListScreen from './screens/ShembulliDyteListScreen';
 import ShembulliDyteEditScreen from './screens/ShembulliDyteEditScreen';
+import PlanetListScreen from './screens/PlanetListScreen';
+import PlanetEditScreen from './screens/PlanetEditScreen'
+import SatelliteListScreen from './screens/SatelliteListScreen';
+import SatelliteEditScreen from './screens/SatelliteEditScreen'
 
 
 function App() {
@@ -60,7 +64,11 @@ function App() {
           <Route path='/admin/shembullidytelist' element={<ShembulliDyteListScreen />} />
           <Route path='/admin/shembullidyte/:id/edit' element={<ShembulliDyteEditScreen />} />
 
+          <Route path='/admin/planetlist' element={<PlanetListScreen />} />
+          <Route path='/admin/planet/:id/edit' element={<PlanetEditScreen />} />
 
+          <Route path='/admin/satellitelist' element={<SatelliteListScreen />} />
+          <Route path='/admin/satellite/:id/edit' element={<SatelliteEditScreen />} />
 
           </Routes>
         </Container>

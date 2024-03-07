@@ -115,3 +115,23 @@ class ShembulliDyte(models.Model):
     shembulliPare = models.ForeignKey(ShembulliPare, on_delete=models.CASCADE, related_name='shembulli_dyte')
     def __str__(self):
         return self.name
+    
+class Planet(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    planetId = models.AutoField(primary_key=True, editable=False)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    type = models.CharField(max_length=50, null=True, blank=True)
+    isDeleted = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.name
+    
+
+class Satellite(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    satelliteId = models.AutoField(primary_key=True, editable=False)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    isDeleted = models.BooleanField(default=False)
+    planetId = models.ForeignKey(Planet, on_delete=models.CASCADE, related_name='satellites')
+    def __str__(self):
+        return self.name
