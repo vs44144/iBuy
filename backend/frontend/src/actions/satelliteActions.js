@@ -44,26 +44,7 @@ export const listSatellites = (keyword = '') => async (dispatch) => {
     }
 }
 
-// export const listTopSatellites = () => async (dispatch) => {
-//     try {
-//         dispatch({ type: SATELLITE_TOP_REQUEST })
 
-//         const { data } = await axios.get(`/api/satellites/top/`)
-
-//         dispatch({
-//             type: SATELLITE_TOP_SUCCESS,
-//             payload: data
-//         })
-
-//     } catch (error) {
-//         dispatch({
-//             type: SATELLITE_TOP_FAIL,
-//             payload: error.response && error.response.data.detail
-//                 ? error.response.data.detail
-//                 : error.message,
-//         })
-//     }
-// }
 
 export const listSatelliteDetails = (id) => async (dispatch) => {
     try {
@@ -184,7 +165,7 @@ export const updateSatellite = (satellite) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.put(
-            `/api/satellites/update/${satellite._id}/`,
+            `/api/satellites/update/${satellite.satelliteId}/`,
             satellite,
             config
         )

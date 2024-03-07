@@ -54,7 +54,7 @@ function SatelliteListScreen() {
     }
 
     if (successCreate) {
-      history(`/admin/satellite/${createdSatellite._id}/edit`);
+      history(`/admin/satellite/${createdSatellite.satelliteId}/edit`);
     } else {
       dispatch(listSatellites(keyword));
     }
@@ -143,8 +143,8 @@ function SatelliteListScreen() {
           <Table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
-                <th>ID</th>
                 <th>NAME</th>
+                <th>PLANET</th>
                 <th>DESCRIPTION</th>
                 <th></th>
               </tr>
@@ -155,13 +155,12 @@ function SatelliteListScreen() {
                 ? planetSatellites?.map((satellite) => {
                     return (
                       <tr key={satellite.id}>
-                        <td>{satellite._id}</td>
+                        <td>{satellite.satelliteId}</td>
                         <td>{satellite.name}</td>
-                        <td>{satellite.description}</td>
 
                         <td>
                           <LinkContainer
-                            to={`/admin/satellite/${satellite._id}/edit`}
+                            to={`/admin/satellite/${satellite.satelliteId}/edit`}
                           >
                             <Button variant="light" className="btn-sm">
                               <i className="fas fa-edit"></i>
@@ -171,7 +170,7 @@ function SatelliteListScreen() {
                           <Button
                             variant="danger"
                             className="btn-sm"
-                            onClick={() => deleteHandler(satellite._id)}
+                            onClick={() => deleteHandler(satellite.satelliteId)}
                           >
                             <i className="fas fa-trash"></i>
                           </Button>
@@ -182,13 +181,13 @@ function SatelliteListScreen() {
                 : satellites.map((satellite) => {
                     return (
                       <tr key={satellite.id}>
-                        <td>{satellite._id}</td>
+                        <td>{satellite.satelliteId}</td>
                         <td>{satellite.name}</td>
-                        <td>{satellite.description}</td>
+                        <td>{satellite.planetId?.name}</td>
 
                         <td>
                           <LinkContainer
-                            to={`/admin/satellite/${satellite._id}/edit`}
+                            to={`/admin/satellite/${satellite.satelliteId}/edit`}
                           >
                             <Button variant="light" className="btn-sm">
                               <i className="fas fa-edit"></i>
@@ -198,7 +197,7 @@ function SatelliteListScreen() {
                           <Button
                             variant="danger"
                             className="btn-sm"
-                            onClick={() => deleteHandler(satellite._id)}
+                            onClick={() => deleteHandler(satellite.satelliteId)}
                           >
                             <i className="fas fa-trash"></i>
                           </Button>

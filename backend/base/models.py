@@ -132,6 +132,6 @@ class Satellite(models.Model):
     satelliteId = models.AutoField(primary_key=True, editable=False)
     name = models.CharField(max_length=200, null=True, blank=True)
     isDeleted = models.BooleanField(default=False)
-    planetId = models.ForeignKey(Planet, on_delete=models.CASCADE, related_name='satellites')
+    planetId = models.ForeignKey(Planet, on_delete=models.CASCADE, related_name='satellites',null=True)
     def __str__(self):
         return self.name

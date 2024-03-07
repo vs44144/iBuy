@@ -54,34 +54,6 @@ function PlanetEditScreen() {
         }))
     } 
   
-    // const uploadFileHandler = async (e) => {
-    //     // console.log('Image is uploaded')
-    //     const file = e.target.files[0]
-    //     const formData = new FormData()
-
-    //     formData.append('image', file)
-    //     formData.append('planet_id', planetId)
-
-    //     setUploading(true)
-
-    //     try {
-    //       const config = {
-    //           headers: {
-    //               'Content-Type': 'multipart/form-data'
-    //           }
-    //       }
-
-    //       const { data } = await axios.post('/api/planets/upload/', formData, config)
-
-
-    //       setImage(data)
-    //       setUploading(false)
-
-    //     } catch (error) {
-    //         setUploading(false)
-    //     }
-    //   }
-
 
     return (
       <div>
@@ -110,27 +82,19 @@ function PlanetEditScreen() {
                 </Form.Control>
               </Form.Group>
 
-
-              {/* <Form.Group controlId="image">
-                <Form.Label>Image</Form.Label>
+              <Form.Group controlId="satellite">
+                <Form.Label>Satellite</Form.Label>
                 <Form.Control
 
-                  type="text"
-                  placeholder="Enter image"
-                  value={image}
-                  onChange={(e) => setImage(e.target.value)}
-                ></Form.Control>
-                
+                  type="satellite"
+                  placeholder="Choose Satellite"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                >
+                </Form.Control>
               </Form.Group>
 
-              <Form.Group controlId="formFileMultiple" className="mb-3">
-                <Form.Control 
-                    type="file" 
-                    placeholder='Choose File'
-                    multiple 
-                    onChange={uploadFileHandler}
-                />
-              </Form.Group> */}
+
 
               { uploading && <Loader />} 
 

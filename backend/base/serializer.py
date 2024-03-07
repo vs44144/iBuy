@@ -121,6 +121,7 @@ class PlanetSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class SatelliteSerializer(serializers.ModelSerializer):
+    planetId = PlanetSerializer()
     
     class Meta:
         model = Satellite
