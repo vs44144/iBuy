@@ -61,7 +61,7 @@ function PlanetEditScreen() {
 
   
         <FormContainer>
-          <h1>Edit Planet</h1>
+          <h1>Edit Planets</h1>
             {loadingUpdate && <Loader />}
             {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
           {loading ? (
