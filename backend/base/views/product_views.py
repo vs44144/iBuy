@@ -15,14 +15,14 @@ from rest_framework import status
 @api_view(['GET'])
 def getProducts(request):
     query = request.query_params.get('keyword')
-    # print('Query:',query)
+    # print('Query:',query) 
 
     if query == None:
         query = ''
-    products = Product.objects.filter(name__icontains=query).order_by('name')
+    products = Product.objects.filter(name__icontains=query).order_by('_id')
 
     page = request.query_params.get('page', 1)
-    paginator = Paginator(products, 5)
+    paginator = Paginator(products, 10)
 
     try:
         products = paginator.page(page)
