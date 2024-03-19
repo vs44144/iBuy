@@ -66,4 +66,3 @@ python manage.py startapp base
 ```
 python manage.py runserver
 ```
-s
