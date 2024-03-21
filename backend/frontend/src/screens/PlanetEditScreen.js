@@ -21,6 +21,8 @@ function PlanetEditScreen() {
     const [shembull, setShembull] = useState(0)
     const [description, setDescription] = useState('')
     const [uploading, setUploading] = useState(false)
+    const [satelliteList, setSatelliteList] = useState(false)
+    const [selectedSatellite, setSelectedSatellite] = useState(null)
   
     const planetDetails = useSelector((state) => state.planetDetails) 
     const { error, loading, planet } = planetDetails 
@@ -43,15 +45,25 @@ function PlanetEditScreen() {
         }
     }, [dispatch, planet, planetId, history, successUpdate])
   
+    const fetchSatellites = async () => {
+      const { data } = await axios.get("api/satellites")
+      setSatelliteList(data.satellites)
+    }
+
+    useEffect(() => {
+      fetchSatellites()
+    },[])
+
     const submitHandler = (e) => {
         // console.log('U perditesua')
         e.preventDefault()
-        dispatch(updatePlanet({
-            _id: planetId,
-            name,
-            shembull,
-            description
-        }))
+        dispatch(
+          updatePlanet({
+            planetId: planetId,
+            satelliteId: selectedSatellite,
+            name
+        })
+      )
     } 
   
 
@@ -82,7 +94,7 @@ function PlanetEditScreen() {
                 </Form.Control>
               </Form.Group>
 
-              <Form.Group controlId="satellite">
+              {/* <Form.Group controlId="satellite">
                 <Form.Label>Satellite</Form.Label>
                 <Form.Control
 
@@ -92,7 +104,31 @@ function PlanetEditScreen() {
                   onChange={(e) => setName(e.target.value)}
                 >
                 </Form.Control>
-              </Form.Group>
+              </Form.Group> */}
+
+              {satelliteList && (
+                <Form.Group controlId="satelliteId">
+                  <Form.Label>Satellite</Form.Label>
+                  <Form.Select defaultValue={
+                    planet.satelliteId 
+                    ? planet.satelliteId.satelliteId
+                    : "Select Satellite"
+                  }
+                  on onChange={(e) => setSelectedSatellite(e.target.value)}
+                  >
+                    <option value={"Select Satellite"} disabled></option>
+                    {satelliteList?.map((satellite,idx)=> {
+                      return (
+                        <option key={idx} value={satellite.satelliteId}>
+                          {satellite?.name}
+                        </option>
+                      )
+                    })}
+                  </Form.Select>
+                </Form.Group>
+              )
+
+              }
 
 
 
