@@ -5,23 +5,22 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from base.models import Satellite
+from base.models import Planet, Satellite
 from base.serializer import SatelliteSerializer
 
 from rest_framework import status
 
 
-
-@api_view(['GET'])
+@api_view(["GET"])
 def getSatellites(request):
-    query = request.query_params.get('keyword')
+    query = request.query_params.get("keyword")
     # print('Query:',query)
 
     if query == None:
-        query = ''
-    satellites = Satellite.objects.filter(name__icontains=query).order_by('satelliteId')
+        query = ""
+    satellites = Satellite.objects.filter(name__icontains=query).order_by("satelliteId")
 
-    page = request.query_params.get('page', 1)
+    page = request.query_params.get("page", 1)
     paginator = Paginator(satellites, 5)
 
     try:
@@ -35,40 +34,49 @@ def getSatellites(request):
         page = 1
 
     page = int(page)
-    
-    serializer = SatelliteSerializer(satellites, many=True)
-    return Response({'satellites': serializer.data, 'page': page, 'pages': paginator.num_pages})
 
-@api_view(['GET'])
+    serializer = SatelliteSerializer(satellites, many=True)
+    return Response(
+        {"satellites": serializer.data, "page": page, "pages": paginator.num_pages}
+    )
+
+
+@api_view(["GET"])
 def getSatellite(request, pk):
     satellite = Satellite.objects.get(satelliteId=pk)
     serializer = SatelliteSerializer(satellite, many=False)
     return Response(serializer.data)
 
-@api_view(['POST'])
+
+@api_view(["POST"])
 @permission_classes([IsAdminUser])
 def createSatellite(request):
     user = request.user
 
     satellite = Satellite.objects.create(
         user=user,
-        name='Satellite Name',
-        type='',
-        isDeleted=''
+        name="Satellite Name",
     )
 
-    serializer = SatelliteSerializer(satellite, many=False)
+    serializer = SatelliteSerializer(satellite)
     return Response(serializer.data)
 
-@api_view(['PUT'])
+
+@api_view(["PUT"])
 @permission_classes([IsAdminUser])
 def updateSatellite(request, pk):
     data = request.data
-    satellite = Satellite.objects.get(_id=pk)
+    planet_id = data.get("planetId")
 
-    satellite.name = data['name']
-    satellite.shembull = data['shembull']
-    satellite.description = data['description']
+    try:
+        planet = Planet.objects.get(pk=planet_id)
+    except Planet.DoesNotExist:
+        return Response(status=400)
+
+    satellite = Satellite.objects.get(pk=pk)
+
+    satellite.name = data["name"]
+    satellite.planetId = planet
 
     satellite.save()
 
@@ -76,23 +84,22 @@ def updateSatellite(request, pk):
     return Response(serializer.data)
 
 
-@api_view(['DELETE'])
+@api_view(["DELETE"])
 @permission_classes([IsAdminUser])
 def deleteSatellite(request, pk):
-    satellite = Satellite.objects.get(_id=pk)
+    satellite = Satellite.objects.get(pk=pk)
     satellite.delete()
-    return Response('Satellite Deleted')
+    return Response("Satellite Deleted")
 
 
-
-@api_view(['POST'])
+@api_view(["POST"])
 def uploadImage(request):
     data = request.data
 
-    satellite_id = data['satellite_id']
+    satellite_id = data["satellite_id"]
     satellite = Satellite.objects.get(_id=satellite_id)
 
-    satellite.image = request.FILES.get('image')
+    satellite.image = request.FILES.get("image")
     satellite.save()
 
-    return Response('Image was uploaded')
+    return Response("Image was uploaded")

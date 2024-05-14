@@ -71,6 +71,23 @@ import{
   satelliteUpdateReducer
 } from './reducers/satelliteReducers'
 
+import{
+  puntoriListReducer,
+  puntoriDetailsReducer,
+  puntoriDeleteReducer,
+  puntoriCreateReducer,
+  puntoriUpdateReducer
+} from './reducers/puntoriReducers'
+
+import{
+  kontrataListReducer,
+  kontrataDetailsReducer,
+  kontrataDeleteReducer,
+  kontrataCreateReducer,
+  kontrataUpdateReducer
+} from './reducers/kontrataReducers'
+
+
 const rootReducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
@@ -127,6 +144,18 @@ const rootReducer = combineReducers({
     satelliteDelete: satelliteDeleteReducer,
     satelliteCreate: satelliteCreateReducer,
     satelliteUpdate: satelliteUpdateReducer,
+
+    puntoriList: puntoriListReducer,
+    puntoriDetails: puntoriDetailsReducer,
+    puntoriDelete: puntoriDeleteReducer,
+    puntoriCreate: puntoriCreateReducer,
+    puntoriUpdate: puntoriUpdateReducer,
+
+    kontrataList: kontrataListReducer,
+    kontrataDetails: kontrataDetailsReducer,
+    kontrataDelete: kontrataDeleteReducer,
+    kontrataCreate: kontrataCreateReducer,
+    kontrataUpdate: kontrataUpdateReducer,
     
 })
 

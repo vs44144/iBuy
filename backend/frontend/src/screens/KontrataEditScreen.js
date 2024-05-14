@@ -8,74 +8,79 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import {
-  listSatelliteDetails,
-  updateSatellite,
-} from "../actions/satelliteActions";
-import { SATELLITE_UPDATE_RESET } from "../constants/satelliteConstants";
+  listKontrataDetails,
+  updateKontrata,
+} from "../actions/kontrataActions";
+import { KONTRATA_UPDATE_RESET } from "../constants/kontrataConstants";
 
-function SatelliteEditScreen() {
+function KontrataEditScreen() {
   const history = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
   const { id } = useParams();
-  const satelliteId = id;
+  const kontrataId = id;
 
   const [name, setName] = useState("");
   const [uploading, setUploading] = useState(false);
-  const [planetList, setPlanetList] = useState(false);
-  const [selectedPlanet, setSelectedPlanet] = useState(null);
+  const [puntoriList, setPuntoriList] = useState(false);
+  const [selectedPuntori, setSelectedPuntori] = useState(null);
 
-  const satelliteDetails = useSelector((state) => state.satelliteDetails);
-  const { error, loading, satellite } = satelliteDetails;
+  const kontrataDetails = useSelector((state) => state.kontrataDetails);
+  const { error, loading, kontrata } = kontrataDetails;
 
-  const satelliteUpdate = useSelector((state) => state.satelliteUpdate);
+  const kontrataUpdate = useSelector((state) => state.kontrataUpdate);
   const {
     error: errorUpdate,
     loading: loadingUpdate,
     success: successUpdate,
-  } = satelliteUpdate;
+  } = kontrataUpdate;
+
+  const [startData, setStartData] = useState(new Date());
 
   useEffect(() => {
     if (successUpdate) {
-      dispatch({ type: SATELLITE_UPDATE_RESET });
-      history("/admin/satellitelist");
+      dispatch({ type: KONTRATA_UPDATE_RESET });
+      history("/admin/kontratalist");
     } else {
-      if (!satellite.name || satellite.satelliteId !== Number(satelliteId)) {
-        dispatch(listSatelliteDetails(satelliteId));
+      if (!kontrata || kontrata.kontrataId !== Number(kontrataId)) {
+        dispatch(listKontrataDetails(kontrataId));
       } else {
-        setName(satellite?.name);
+        setName(kontrata?.name);
+        setStartData(kontrata?.startData ? kontrata.startData.toString() : ''); 
       }
     }
-  }, [dispatch, satellite, satelliteId, history, successUpdate]);
+  }, [dispatch, kontrata, kontrataId, history, successUpdate]);
+  
+  
 
-  const fetchPlanets = async () => {
-    const { data } = await axios.get("/api/planets");
-    setPlanetList(data.planets);
+  const fetchPuntoris = async () => {
+    const { data } = await axios.get("/api/puntoris");
+    setPuntoriList(data.puntoris);
   };
 
   useEffect(() => {
-    fetchPlanets();
+    fetchPuntoris();
   }, []);
 
   const submitHandler = (e) => {
     // console.log('U perditesua')
     e.preventDefault();
     dispatch(
-      updateSatellite({
-        satelliteId: satelliteId,
-        planetId: selectedPlanet,
+      updateKontrata({
+        kontrataId: kontrataId,
+        puntoriId: selectedPuntori,
         name,
       })
     );
   };
 
-  console.log("sattelite", satellite)
+  console.log("kontrata", kontrata)
   return (
     <div>
-      <Link to="/admin/satellitelist/">Go Back</Link>
+      <Link to="/admin/kontratalist/">Go Back</Link>
 
       <FormContainer>
-        <h1>Edit Satellite</h1>
+        <h1>Edit Kontrata</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
         {loading ? (
@@ -94,30 +99,41 @@ function SatelliteEditScreen() {
               ></Form.Control>
             </Form.Group>
 
-            {planetList && (
-              <Form.Group controlId="planetId">
-                <Form.Label>Planet</Form.Label>
+            {puntoriList && (
+              <Form.Group controlId="puntoriId">
+                <Form.Label>Puntori</Form.Label>
                 <Form.Select
                   defaultValue={
-                    satellite.planetId
-                      ? satellite.planetId.planetId
-                      : "Select planet"
+                    kontrata.puntoriId
+                      ? kontrata.puntoriId.puntoriId
+                      : "Select puntori"
                   }
-                  onChange={(e) => setSelectedPlanet(e.target.value)}
+                  onChange={(e) => setSelectedPuntori(e.target.value)}
                 >
-                  <option value={"Select planet"} disabled>
-                    Select planet
+                  <option value={"Select puntori"} disabled>
+                    Select puntori
                   </option>
-                  {planetList?.map((planet, idx) => {
+                  {puntoriList?.map((puntori, idx) => {
                     return (
-                      <option key={idx} value={planet.planetId}>
-                        {planet?.name}
+                      <option key={idx} value={puntori.puntoriId}>
+                        {puntori?.name}
                       </option>
                     );
                   })}
                 </Form.Select>
               </Form.Group>
             )}
+
+            <Form.Group controlId="startData">
+              <Form.Label>Start Date</Form.Label>
+              <Form.Control
+                type="date"
+                value={startData}
+                onChange={(e) => setStartData(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+
+
 
             {/* <Form.Group controlId="image">
                 <Form.Label>Image</Form.Label>
@@ -143,7 +159,7 @@ function SatelliteEditScreen() {
             {uploading && <Loader />}
 
             <Button type="submit" variant="primary">
-              Update Satellite
+              Update Kontrata
             </Button>
           </Form>
         )}
@@ -152,4 +168,4 @@ function SatelliteEditScreen() {
   );
 }
 
-export default SatelliteEditScreen;
+export default KontrataEditScreen;

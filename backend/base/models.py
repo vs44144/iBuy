@@ -132,6 +132,27 @@ class Satellite(models.Model):
     satelliteId = models.AutoField(primary_key=True, editable=False)
     name = models.CharField(max_length=200, null=True, blank=True)
     isDeleted = models.BooleanField(default=False)
-    planetId = models.ForeignKey(Planet, on_delete=models.CASCADE, related_name='satellites')
+    planetId = models.ForeignKey(Planet, on_delete=models.CASCADE, related_name='satellites',null=True)
+    def __str__(self):
+        return self.name
+    
+class Puntori(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    puntoriId = models.AutoField(primary_key=True, editable=False)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    isActive = models.BooleanField(default=False)
+    isDeleted = models.BooleanField(default=False)
+    
+    def __str__(self):
+        return self.name
+
+class Kontrata(models.Model):
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    kontrataId = models.AutoField(primary_key=True, editable=False)
+    name = models.CharField(max_length=200, null=True, blank=True)
+    startDate = models.IntegerField(null=True, blank=True)
+    startData = models.DateField(null=True, blank=True)
+    isDeleted = models.BooleanField(default=False)
+    puntoriId = models.ForeignKey(Puntori, on_delete=models.CASCADE, related_name='kontratat',null=True)
     def __str__(self):
         return self.name

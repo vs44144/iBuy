@@ -1,42 +1,42 @@
 import axios from 'axios'
 import { 
-    SATELLITE_LIST_REQUEST,
-    SATELLITE_LIST_SUCCESS,
-    SATELLITE_LIST_FAIL,
+    KONTRATA_LIST_REQUEST,
+    KONTRATA_LIST_SUCCESS,
+    KONTRATA_LIST_FAIL,
 
-    SATELLITE_DETAILS_REQUEST,
-    SATELLITE_DETAILS_SUCCESS,
-    SATELLITE_DETAILS_FAIL,
+    KONTRATA_DETAILS_REQUEST,
+    KONTRATA_DETAILS_SUCCESS,
+    KONTRATA_DETAILS_FAIL,
 
 
-    SATELLITE_DELETE_REQUEST,
-    SATELLITE_DELETE_SUCCESS,
-    SATELLITE_DELETE_FAIL,
+    KONTRATA_DELETE_REQUEST,
+    KONTRATA_DELETE_SUCCESS,
+    KONTRATA_DELETE_FAIL,
 
-    SATELLITE_CREATE_REQUEST,
-    SATELLITE_CREATE_SUCCESS,
-    SATELLITE_CREATE_FAIL,
+    KONTRATA_CREATE_REQUEST,
+    KONTRATA_CREATE_SUCCESS,
+    KONTRATA_CREATE_FAIL,
 
-    SATELLITE_UPDATE_REQUEST,
-    SATELLITE_UPDATE_SUCCESS,
-    SATELLITE_UPDATE_FAIL
+    KONTRATA_UPDATE_REQUEST,
+    KONTRATA_UPDATE_SUCCESS,
+    KONTRATA_UPDATE_FAIL
 
-} from '../constants/satelliteConstants'
+} from '../constants/kontrataConstants'
 
-export const listSatellites = (keyword = '') => async (dispatch) => {
+export const listKontratas = (keyword = '') => async (dispatch) => {
     try {
-        dispatch({ type: SATELLITE_LIST_REQUEST })
+        dispatch({ type: KONTRATA_LIST_REQUEST })
 
-        const { data } = await axios.get(`/api/satellites${keyword}`)
+        const { data } = await axios.get(`/api/kontratas${keyword}`)
 
         dispatch({
-            type: SATELLITE_LIST_SUCCESS,
+            type: KONTRATA_LIST_SUCCESS,
             payload: data
         })
 
     } catch (error) {
         dispatch({
-            type: SATELLITE_LIST_FAIL,
+            type: KONTRATA_LIST_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,
@@ -46,20 +46,21 @@ export const listSatellites = (keyword = '') => async (dispatch) => {
 
 
 
-export const listSatelliteDetails = (id) => async (dispatch) => {
-    try {
-        dispatch({ type: SATELLITE_DETAILS_REQUEST })
 
-        const { data } = await axios.get(`/api/satellites/${id}`)
+export const listKontrataDetails = (id) => async (dispatch) => {
+    try {
+        dispatch({ type: KONTRATA_DETAILS_REQUEST })
+
+        const { data } = await axios.get(`/api/kontratas/${id}`)
 
         dispatch({
-            type: SATELLITE_DETAILS_SUCCESS,
+            type: KONTRATA_DETAILS_SUCCESS,
             payload: data
         })
 
     } catch (error) {
         dispatch({
-            type: SATELLITE_DETAILS_FAIL,
+            type: KONTRATA_DETAILS_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,
@@ -67,10 +68,10 @@ export const listSatelliteDetails = (id) => async (dispatch) => {
     }
 }
 
-export const deleteSatellite = (id) => async (dispatch, getState) => {
+export const deleteKontrata = (id) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: SATELLITE_DELETE_REQUEST
+            type: KONTRATA_DELETE_REQUEST
         })
 
         const {
@@ -85,18 +86,18 @@ export const deleteSatellite = (id) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.delete(
-            `/api/satellites/delete/${id}/`,
+            `/api/kontratas/delete/${id}/`,
             config
         )
 
         dispatch({
-            type: SATELLITE_DELETE_SUCCESS,
+            type: KONTRATA_DELETE_SUCCESS,
         })
 
 
     } catch (error) {
         dispatch({
-            type: SATELLITE_DELETE_FAIL,
+            type: KONTRATA_DELETE_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,
@@ -107,10 +108,10 @@ export const deleteSatellite = (id) => async (dispatch, getState) => {
 
 
 
-export const createSatellite = () => async (dispatch, getState) => {
+export const createKontrata = () => async (dispatch, getState) => {
     try {
         dispatch({
-            type: SATELLITE_CREATE_REQUEST
+            type: KONTRATA_CREATE_REQUEST
         })
 
         const {
@@ -125,19 +126,19 @@ export const createSatellite = () => async (dispatch, getState) => {
         }
 
         const { data } = await axios.post(
-            `/api/satellites/create/`,
+            `/api/kontratas/create/`,
             {},
             config
         )
         dispatch({
-            type: SATELLITE_CREATE_SUCCESS,
+            type: KONTRATA_CREATE_SUCCESS,
             payload: data,
         })
 
 
     } catch (error) {
         dispatch({
-            type: SATELLITE_CREATE_FAIL,
+            type: KONTRATA_CREATE_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,
@@ -147,10 +148,10 @@ export const createSatellite = () => async (dispatch, getState) => {
 
 
 
-export const updateSatellite = (satellite) => async (dispatch, getState) => {
+export const updateKontrata = (kontrata) => async (dispatch, getState) => {
     try {
         dispatch({
-            type: SATELLITE_UPDATE_REQUEST
+            type: KONTRATA_UPDATE_REQUEST
         })
 
         const {
@@ -165,25 +166,25 @@ export const updateSatellite = (satellite) => async (dispatch, getState) => {
         }
 
         const { data } = await axios.put(
-            `/api/satellites/update/${satellite.satelliteId}/`,
-            satellite,
+            `/api/kontratas/update/${kontrata.kontrataId}/`,
+            kontrata,
             config
         )
         dispatch({
-            type: SATELLITE_UPDATE_SUCCESS,
+            type: KONTRATA_UPDATE_SUCCESS,
             payload: data,
         })
 
 
         dispatch({
-            type: SATELLITE_DETAILS_SUCCESS,
+            type: KONTRATA_DETAILS_SUCCESS,
             payload: data
         })
 
 
     } catch (error) {
         dispatch({
-            type: SATELLITE_UPDATE_FAIL,
+            type: KONTRATA_UPDATE_FAIL,
             payload: error.response && error.response.data.detail
                 ? error.response.data.detail
                 : error.message,

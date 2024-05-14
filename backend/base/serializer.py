@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.tokens import RefreshToken
-from .models import Product, Order, OrderItem, ShippingAddress, Review, Example, ShembulliPare, ShembulliDyte, Planet, Satellite
+from .models import Product, Order, OrderItem, ShippingAddress, Review, Example, ShembulliPare, ShembulliDyte, Planet, Satellite, Puntori, Kontrata
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -121,8 +121,22 @@ class PlanetSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class SatelliteSerializer(serializers.ModelSerializer):
+    planetId = PlanetSerializer()
     
     class Meta:
         model = Satellite
         fields = '__all__'
 
+class PuntoriSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Puntori
+        fields = '__all__'
+
+class KontrataSerializer(serializers.ModelSerializer):
+    puntoriId = PuntoriSerializer()
+    startData = serializers.DateField()
+    
+    class Meta:
+        model = Kontrata
+        fields = '__all__'

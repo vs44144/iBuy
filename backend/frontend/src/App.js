@@ -26,7 +26,11 @@ import ShembulliDyteEditScreen from './screens/ShembulliDyteEditScreen';
 import PlanetListScreen from './screens/PlanetListScreen';
 import PlanetEditScreen from './screens/PlanetEditScreen'
 import SatelliteListScreen from './screens/SatelliteListScreen';
-import SatelliteEditScreen from './screens/SatelliteEditScreen'
+import SatelliteEditScreen from './screens/SatelliteEditScreen';
+import PuntoriListScreen from './screens/PuntoriListScreen';
+import PuntoriEditScreen from './screens/PuntoriEditScreen';
+import KontrataListScreen from './screens/KontrataListScreen';
+import KontrataEditScreen from './screens/KontrataEditScreen';
 
 
 function App() {
@@ -69,6 +73,12 @@ function App() {
 
           <Route path='/admin/satellitelist' element={<SatelliteListScreen />} />
           <Route path='/admin/satellite/:id/edit' element={<SatelliteEditScreen />} />
+          
+          <Route path='/admin/puntorilist' element={<PuntoriListScreen />} />
+          <Route path='/admin/puntori/:id/edit' element={<PuntoriEditScreen />} />
+
+          <Route path='/admin/kontratalist' element={<KontrataListScreen />} />
+          <Route path='/admin/kontrata/:id/edit' element={<KontrataEditScreen />} />
 
           </Routes>
         </Container>

@@ -90,6 +90,14 @@ function Header() {
                 <NavDropdown.Item>Satellite</NavDropdown.Item>
                   </LinkContainer>
 
+                  <LinkContainer to='/admin/puntorilist'>
+                <NavDropdown.Item>Puntori</NavDropdown.Item>
+                  </LinkContainer>
+
+                  <LinkContainer to='/admin/kontratalist'>
+                <NavDropdown.Item>Kontrata</NavDropdown.Item>
+                  </LinkContainer>
+
                 </NavDropdown>
           )}
           </Nav>

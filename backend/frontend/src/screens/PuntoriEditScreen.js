@@ -7,60 +7,58 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader' 
 import Message from '../components/Message' 
 import FormContainer from '../components/FormContainer' 
-import { listPlanetDetails, updatePlanet } from '../actions/planetActions' 
-import {  PLANET_UPDATE_RESET } from '../constants/planetConstants'
+import { listPuntoriDetails, updatePuntori } from '../actions/puntoriActions' 
+import {  PUNTORI_UPDATE_RESET } from '../constants/puntoriConstants'
 
-function PlanetEditScreen() {
+function PuntoriEditScreen() {
     const history = useNavigate() 
     const location = useLocation() 
     const dispatch = useDispatch() 
     const { id } = useParams() 
-    const planetId = id 
+    const puntoriId = id 
   
     const [name, setName] = useState('') 
     const [shembull, setShembull] = useState(0)
     const [description, setDescription] = useState('')
     const [uploading, setUploading] = useState(false)
-    const [satelliteList, setSatelliteList] = useState(false)
-    const [selectedSatellite, setSelectedSatellite] = useState(null)
+    // const [kontrataList, setKontrataList] = useState(false)
+    // const [selectedKontrata, setSelectedKontrata] = useState(null)
   
-    const planetDetails = useSelector((state) => state.planetDetails) 
-    const { error, loading, planet } = planetDetails 
+    const puntoriDetails = useSelector((state) => state.puntoriDetails) 
+    const { error, loading, puntori } = puntoriDetails 
 
-    const planetUpdate = useSelector(state => state.planetUpdate)
-    const { error: errorUpdate, loading: loadingUpdate, success: successUpdate } = planetUpdate
+    const puntoriUpdate = useSelector(state => state.puntoriUpdate)
+    const { error: errorUpdate, loading: loadingUpdate, success: successUpdate } = puntoriUpdate
   
     useEffect(() => {
         if (successUpdate) {
-            dispatch({ type: PLANET_UPDATE_RESET })
-            history('/admin/planetlist')
+            dispatch({ type: PUNTORI_UPDATE_RESET })
+            history('/admin/puntorilist')
         } else {
-            if (!planet.name || planet._id !== Number(planetId)) {
-                dispatch(listPlanetDetails(planetId))
+            if (!puntori.name || puntori.puntoriId !== Number(puntoriId)) {
+                dispatch(listPuntoriDetails(puntoriId))
             } else {
-                setName(planet.name)
-                setShembull(planet.shembull)
-                setDescription(planet.description)
+                setName(puntori.name)
             }
         }
-    }, [dispatch, planet, planetId, history, successUpdate])
+    }, [dispatch, puntori, puntoriId, history, successUpdate])
   
-    const fetchSatellites = async () => {
-      const { data } = await axios.get("api/satellites")
-      setSatelliteList(data.satellites)
-    }
+    // const fetchKontratas = async () => {
+    //   const { data } = await axios.get("api/kontratas")
+    //   setKontrataList(data.kontratas)
+    // }
 
-    useEffect(() => {
-      fetchSatellites()
-    },[])
+    // useEffect(() => {
+    //   fetchKontratas()
+    // },[])
 
     const submitHandler = (e) => {
         // console.log('U perditesua')
         e.preventDefault()
         dispatch(
-          updatePlanet({
-            planetId: planetId,
-            satelliteId: selectedSatellite,
+          updatePuntori({
+            puntoriId: puntoriId,
+            // kontrataId: selectedKontrata,
             name
         })
       )
@@ -69,11 +67,11 @@ function PlanetEditScreen() {
 
     return (
       <div>
-        <Link to="/admin/planetlist/">Go Back</Link>
+        <Link to="/admin/puntorilist/">Go Back</Link>
 
   
         <FormContainer>
-          <h1>Edit Planet</h1>
+          <h1>Edit Puntori</h1>
             {loadingUpdate && <Loader />}
             {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
           {loading ? (
@@ -94,33 +92,33 @@ function PlanetEditScreen() {
                 </Form.Control>
               </Form.Group>
 
-              {/* <Form.Group controlId="satellite">
-                <Form.Label>Satellite</Form.Label>
+              {/* <Form.Group controlId="kontrata">
+                <Form.Label>Kontrata</Form.Label>
                 <Form.Control
 
-                  type="satellite"
-                  placeholder="Choose Satellite"
+                  type="kontrata"
+                  placeholder="Choose Kontrata"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 >
                 </Form.Control>
               </Form.Group> */}
 
-              {satelliteList && (
-                <Form.Group controlId="satelliteId">
-                  <Form.Label>Satellite</Form.Label>
+              {/* {kontrataList && (
+                <Form.Group controlId="kontrataId">
+                  <Form.Label>Kontrata</Form.Label>
                   <Form.Select defaultValue={
-                    planet.satelliteId 
-                    ? planet.satelliteId.satelliteId
-                    : "Select Satellite"
+                    puntori.kontrataId 
+                    ? puntori.kontrataId.kontrataId
+                    : "Select Kontrata"
                   }
-                  on onChange={(e) => setSelectedSatellite(e.target.value)}
+                  on onChange={(e) => setSelectedKontrata(e.target.value)}
                   >
-                    <option value={"Select Satellite"} disabled></option>
-                    {satelliteList?.map((satellite,idx)=> {
+                    <option value={"Select Kontrata"} disabled></option>
+                    {kontrataList?.map((kontrata,idx)=> {
                       return (
-                        <option key={idx} value={satellite.satelliteId}>
-                          {satellite?.name}
+                        <option key={idx} value={kontrata.kontrataId}>
+                          {kontrata?.name}
                         </option>
                       )
                     })}
@@ -128,11 +126,11 @@ function PlanetEditScreen() {
                 </Form.Group>
               )
 
-              }
+              } */}
 
 
 
-              { uploading && <Loader />} 
+              {/* { uploading && <Loader />}  */}
 
               <Form.Group controlId="description">
                 <Form.Label>Description</Form.Label>
@@ -147,7 +145,7 @@ function PlanetEditScreen() {
     
 
               <Button type="submit" variant="primary">
-                Update Planet
+                Update Puntori
               </Button>
             </Form>
           )}
@@ -156,4 +154,4 @@ function PlanetEditScreen() {
     ) 
 }
 
-export default PlanetEditScreen
+export default PuntoriEditScreen
